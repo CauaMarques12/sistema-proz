@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="auth.css">
-    <title>Login</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="auth.css" />
+    <title>ProzSystem: Login</title>
+  </head>
+  <body>
     <main>
-        <img src="images/logo.png" alt="logo inter">
-        <h1>Entre na sua conta</h1>
+      <img src="images/logo.png" alt="logo inter" />
+      <h1>Entre na sua conta</h1>
 
-        <form action="/" method="post">
-            <input type="email" placeholder="E-mail..." name="email">
-            <input type="password" placeholder="Senha..." name="password">
+      <form action="index.html">
+        <div>
+          <label for="email">E-mail</label>
+          <input type="email" placeholder="E-mail..." name="email" required />
+        </div>
 
-            <button type="submit">Entrar</button>
-            <p>Ainda não possui uma conta? <a href="/signin.html">Crie uma</a>.</p>
-        </form>
+        <div>
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            placeholder="Senha..."
+            name="password"
+            min="8"
+            max="100"
+            required
+          />
+        </div>
+
+        <button type="submit">Entrar</button>
+        <p>Ainda não possui uma conta? <a href="sign.html">Crie uma</a>.</p>
+      </form>
     </main>
-</body>
+
+    <script src="auth.js"></script>
+  </body>
 </html>
