@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="auth.css" />
+    <title>Sign</title>
+  </head>
+  <body>
+    <main>
+      <img src="images/logo.png" alt="logo inter" />
+      <h1>Crie sua conta</h1>
+
+      <form action="index.html">
+        <div>
+          <label for="email">E-mail</label>
+          <input type="email" placeholder="E-mail..." name="email" required />
+        </div>
+
+        <div>
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            placeholder="Senha..."
+            name="password"
+            min="8"
+            max="100"
+            required />
+        </div>
+
+        <div>
+          <label>Gênero</label>
+
+          <div>
+            <input type="radio" name="gender" value="male" id="male" required />
+            <label for="male">Masculino</label>
+          </div>
+
+          <div>
+            <input type="radio" name="gender" value="female" id="female"
+              required />
+            <label for="female">Feminino</label>
+          </div>
+        </div>
+
+        <button type="submit">Criar Conta</button>
+        <p>Já possui uma conta? <a href="login.html">Entre aqui</a>.</p>
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
+    <script src="auth.js" type="module"></script>
+  </body>
+</html>
