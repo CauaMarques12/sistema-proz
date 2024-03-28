@@ -1,4 +1,4 @@
-import {StorageToken} from "./storage.js"
+import { StorageToken } from "./services/storage.js";
 
 const logOutButton = document.getElementById("logout");
 const token = StorageToken.get();

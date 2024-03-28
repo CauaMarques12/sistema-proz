@@ -1,83 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="auth.css" />
     <title>Sign</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <img src="images/logo.png" alt="logo inter" />
-        <h1>Crie sua conta</h1>
+      <img src="assets/logo.png" alt="logo inter" />
+      <h1>Crie sua conta</h1>
 
-        <form id="form">
-            <div>
-                <label for="email">Nome</label>
-                <input type="text" placeholder="Nome..." name="name" required value="varlos" />
-            </div>
+      <form id="form">
+        <div>
+          <label for="email">Nome</label>
+          <input type="text" placeholder="Nome..." name="name" required value="varlos" />
+        </div>
 
-            <div>
-                <label for="email">E-mail</label>
-                <input type="email" placeholder="E-mail..." name="email" required value="a@a.com" />
-            </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input type="email" placeholder="E-mail..." name="email" required value="a@a.com" />
+        </div>
 
-            <div>
-                <label for="password">Senha</label>
-                <input type="password" placeholder="Senha..." name="password" min="8" max="100" required
-                    value="123456788" />
-            </div>
+        <div>
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            placeholder="Senha..."
+            name="password"
+            min="8"
+            max="100"
+            required
+            value="123456788"
+          />
+        </div>
 
-            <div>
-                <label for="password">Idade</label>
-                <input type="number" placeholder="Senha..." name="age" min="8" max="100" required value="12" />
-            </div>
+        <div>
+          <label for="password">Idade</label>
+          <input
+            type="number"
+            placeholder="Senha..."
+            name="age"
+            min="8"
+            max="100"
+            required
+            value="12"
+          />
+        </div>
 
-            <div>
-                <label for="password">Telefone</label>
-                <input type="number" placeholder="Senha..." name="cell" required value="31910221263" />
-            </div>
+        <div>
+          <label for="password">Telefone</label>
+          <input type="number" placeholder="Senha..." name="cell" required value="31910221263" />
+        </div>
 
-            <div>
-                <label>Gênero</label>
+        <div>
+          <label>Gênero</label>
 
-                <div>
-                    <input type="radio" name="gender" value="M" id="male" required checked />
-                    <label for="male">Masculino</label>
-                </div>
+          <div>
+            <input type="radio" name="gender" value="M" id="male" required checked />
+            <label for="male">Masculino</label>
+          </div>
 
-                <div>
-                    <input type="radio" name="gender" value="F" id="female" required />
-                    <label for="female">Feminino</label>
-                </div>
-            </div>
+          <div>
+            <input type="radio" name="gender" value="F" id="female" required />
+            <label for="female">Feminino</label>
+          </div>
+        </div>
 
-            <button type="submit">Criar Conta</button>
-            <p>Já possui uma conta? <a href="login.html">Entre aqui</a>.</p>
-        </form>
+        <button type="submit">Criar Conta</button>
+        <p>Já possui uma conta? <a href="login.html">Entre aqui</a>.</p>
+      </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const form = document.querySelector("#form");
+      const form = document.querySelector("#form");
 
-        axios.defaults.baseURL = 'http://localhost:3000'
+      axios.defaults.baseURL = "http://localhost:3000";
 
-        form.addEventListener("submit", async function (event) {
-            event.preventDefault()
-            try {
-                const formData = new FormData(event.target);
-                console.log(formData)
-                await axios.post('register.php', formData);
-
-            } catch (error) {
-                console.log(error);
-            }
-        })
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        try {
+          const formData = new FormData(event.target);
+          console.log(formData);
+          await axios.post("register.php", formData);
+        } catch (error) {
+          console.log(error);
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>

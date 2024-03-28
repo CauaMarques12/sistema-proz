@@ -3,19 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="auth.css" />
-    <title>Sign</title>
+    <title>ProzSystem: Sign</title>
   </head>
   <body>
     <main>
-      <img src="images/logo.png" alt="logo inter" />
+      <img src="assets/logo.png" alt="logo inter" />
       <h1>Crie sua conta</h1>
 
       <form action="index.html">
         <div>
+          <label for="name">Nome</label>
+          <input type="text" id="name" placeholder="Nome..." name="name" required />
+        </div>
+
+        <div>
           <label for="email">E-mail</label>
-          <input type="email" placeholder="E-mail..." name="email" required />
+          <input type="email" id="email" placeholder="E-mail..." name="email" required />
         </div>
 
         <div>
@@ -24,22 +29,41 @@
             type="password"
             placeholder="Senha..."
             name="password"
+            id="password"
             min="8"
             max="100"
-            required />
+            required
+          />
+        </div>
+
+        <div>
+          <label for="age">Idade</label>
+          <input
+            type="number"
+            id="age"
+            placeholder="Idade..."
+            name="age"
+            min="8"
+            max="100"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="cell">Telefone</label>
+          <input type="number" id="cell" placeholder="N° de telefone..." name="cell" required />
         </div>
 
         <div>
           <label>Gênero</label>
 
           <div>
-            <input type="radio" name="gender" value="male" id="male" required />
+            <input type="radio" name="gender" value="M" id="male" required />
             <label for="male">Masculino</label>
           </div>
 
           <div>
-            <input type="radio" name="gender" value="female" id="female"
-              required />
+            <input type="radio" name="gender" value="F" id="female" required />
             <label for="female">Feminino</label>
           </div>
         </div>
@@ -49,7 +73,7 @@
       </form>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
-    <script src="auth.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="src/auth.js" type="module"></script>
   </body>
 </html>
