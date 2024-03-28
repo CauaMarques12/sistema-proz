@@ -1,0 +1,18 @@
+{
+    "name": "usuario/backend",
+    "autoload": {
+        "psr-4": {
+            "app\\":"app"
+        }
+    },
+    "authors": [
+        {
+            "name": "MostMagic",
+            "email": "rhuan.reis83@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "6.5.0",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
