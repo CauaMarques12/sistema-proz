@@ -1,7 +1,9 @@
-const logOutButton = document.getElementById("logout");
-const user = localStorage.getItem("user");
+import {StorageToken} from "./storage.js"
 
-if (!user) {
+const logOutButton = document.getElementById("logout");
+const token = StorageToken.get();
+
+if (!token) {
   document.body.innerText =
     "Você precisa estar logado para acessar esta página. Redirecionando em 5 segundos...";
 
@@ -11,7 +13,7 @@ if (!user) {
 }
 
 logOutButton.addEventListener("click", () => {
-  localStorage.removeItem("user");
+  StorageToken.remove();
 
   window.location.href = "sign.html";
 });

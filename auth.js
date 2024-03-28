@@ -1,11 +1,13 @@
+import { StorageToken } from "./storage.js";
+
 const formElement = document.querySelector("form");
 
 formElement.addEventListener("submit", handleFormSubmit);
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
 
-  const formData = new FormData(formElement);
+  const formData = new FormData(e.target);
 
   const data = {
     email: formData.get("email"),
@@ -19,7 +21,7 @@ function handleFormSubmit(e) {
 
   const authType = data.gender ? "sign" : "login";
 
-  authType == "login" ? login(data) : sign(data);
+  authType == "login" ? login(formData) : sign(data);
 }
 
 function validateData(data) {
@@ -35,8 +37,11 @@ function validateData(data) {
   return true;
 }
 
-function login(data) {
-  localStorage.setItem("user", JSON.stringify(data));
+async function login(formData) {
+  axios.defaults.baseURL = "http://localhost:3000";
+  const { data: token } = await axios.post("login.php", formData);
+
+  StorageToken.set(token);
 
   window.location.href = "index.html";
 }
