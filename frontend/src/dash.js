@@ -1,3 +1,10 @@
+document.getElementById('open_btn').addEventListener('click', function () {
+  document.getElementById('sidebar').classList.toggle('open-sidebar');
+});
+
+
+
+
 const ctx = document.getElementById('dash1');
 
 new Chart(ctx, {
