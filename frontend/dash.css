@@ -15,20 +15,69 @@ body{
 
 main{
     padding: 20px;
+    width: 100%;
 }
 
 canvas{
     border: 1px solid gainsboro;
     background: white;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
+}
+
+.container-area {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.area-maior{
+    display: flex;
+    max-width: 100%;
+    gap: 20px;
+    justify-content: center;
 }
 
 .container{
     position: relative;
-    margin: auto;
-    height: 400px;
-    width: 400px;
+    display: flex;
+    flex: 1;
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+    justify-content: center;
 }
+
+.container-graphic{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    gap: 10px;
+    width: 550px;
+    height: 300px;
+}
+
+ #dash5{
+    width: 550px;
+    height: 300px;
+    align-items: center;
+    margin-top: 80px;
+}
+
+#dash4{
+    width: 550px;
+    height: 300px;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.container-area{
+    max-width: 100%;
+}
+
 
 
 /* sidebar css */
