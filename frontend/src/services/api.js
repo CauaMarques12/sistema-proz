@@ -10,7 +10,7 @@ export class API {
 
       StorageToken.set(token);
 
-      window.location.href = "index.html";
+      window.location.href = "dash.html";
     } catch (e) {
       setFormError(e.response.data);
     }
