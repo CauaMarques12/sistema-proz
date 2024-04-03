@@ -13,6 +13,24 @@ $cellphone = htmlspecialchars($_POST['cell']);
 $gender = htmlspecialchars($_POST['gender']);
 $name = htmlspecialchars($_POST['name']);
 
+if (strlen($name) > 50){
+   http_response_code(402);
+   echo "Nome é muito grande.";
+   exit();
+}
+
+if (strlen($password) > 18){
+   http_response_code(402);
+   echo "Senha grande demais.";
+   exit();
+}
+
+if (strlen($cellphone) != 11){
+   http_response_code(402);
+   echo "Formato de número inválido, deve conter 11 caracteres.";
+   exit();
+}
+
 $pdo = Connection::connect();
 
 try {
