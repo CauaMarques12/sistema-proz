@@ -28,7 +28,7 @@ if (!$userFound) {
     return;
 }
 
-if ($password !== $userFound->senha) {
+if (password_verify($password, $userFound->senha)) {
     http_response_code(401);
     echo "Senha incorreta";
     return;

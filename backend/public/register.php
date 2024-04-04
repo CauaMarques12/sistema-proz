@@ -38,7 +38,7 @@ try {
    $prepare->execute([
       $name,
       $age,
-      $password,
+      password_hash($password, PASSWORD_DEFAULT),
       $email,
       $cellphone,
       $gender
