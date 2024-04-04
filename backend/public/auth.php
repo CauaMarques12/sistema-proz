@@ -13,15 +13,19 @@ $authorization = $_SERVER["HTTP_AUTHORIZATION"];
 
 $token = str_replace('Bearer ', '', $authorization);
 
-try{
-
+try {
     $decoded = JWT::decode($token, $_SERVER['KEY'], ['HS256']);
     echo json_encode($decoded);
-
-}catch(Throwable $e){
-    if ($e-> getMessage() == 'Expired token') {
+} 
+catch (Throwable $e) {
+    if ($e->getMessage() === 'Expired token') {
         http_response_code(401);
-        die($e -> getMessage());
-    }
-   
+        die($e->getMessage());
+    }     
+    else { //testar com julio
+        http_response_code(401); //testar com julio
+        die("Token inválido"); // testar com julio
+    } //testar com julio
+
 }
+
