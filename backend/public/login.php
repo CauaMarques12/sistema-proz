@@ -28,16 +28,17 @@ if (!$userFound) {
     return;
 }
 
-if (password_verify($password, $userFound->senha)) {
+if (!password_verify($password, $userFound->senha)) {
     http_response_code(401);
     echo "Senha incorreta";
     return;
 }
 
 $payload = [
-    "exp" => time() + 1000,
+    "exp" => time() + 1000 * 60 * 60 * 24,
     "iat" => time(),
-    "email" => $email
+    "email" => $email,
+    "admin" => true,
 ];
 
 $encode = JWT::encode($payload, $_ENV['KEY'], "HS256");
