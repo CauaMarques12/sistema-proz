@@ -25,4 +25,3 @@ catch (Throwable $e) {
         die("Token inválido");
 
 }
-
