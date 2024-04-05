@@ -49,9 +49,10 @@
           />
         </div>
 
+       
         <div>
           <label for="cell">Telefone</label>
-          <input type="number" id="cell" placeholder="N° de telefone..." name="cell" required />
+          <input type="tel" id="phone" name="cell" required value="31910221263" pattern="[0-9]{11}" maxlength="11" oninput="formatPhone()">
         </div>
 
         <div>
@@ -75,5 +76,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="src/auth.js" type="module"></script>
+    <script>
+      function formatPhone() {
+  const phoneInput = document.getElementById("phone");
+  const phoneValue = phoneInput.value.replace(/\D/g, '').substring(0, 11);
+  const formattedPhone = phoneValue.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+  phoneInput.value = formattedPhone;
+}
+    </script>
   </body>
 </html>
