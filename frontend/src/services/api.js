@@ -1,7 +1,7 @@
 import { setFormError } from "../utils/set-form-error.js";
 import { StorageToken } from "../services/storage.js";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://localhost:8000";
 
 export class API {
   static async login(formData) {
