@@ -24,22 +24,21 @@ $userFound = $prepare->fetch();
 
 if (!$userFound) {
     http_response_code(404);
-    echo "Usuário não encontrado";
-    return;
+    die("Usuário não encontrado");
 }
 
 if (!password_verify($password, $userFound->senha)) {
     http_response_code(401);
-    echo "Senha incorreta";
-    return;
+    die("Senha incorreta");
 }
 
 $payload = [
     "exp" => time() + 1000 * 60 * 60 * 24,
     "iat" => time(),
     "email" => $email,
-    "admin" => true,
+    "admin" => ($userFound->setor == "admin") ? true : false,
 ];
+
 
 $encode = JWT::encode($payload, $_ENV['KEY'], "HS256");
 
