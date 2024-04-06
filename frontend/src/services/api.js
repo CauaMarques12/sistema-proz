@@ -1,7 +1,8 @@
 import { setFormError } from "../utils/set-form-error.js";
-import { StorageToken } from "../services/storage.js";
+import { StorageToken } from "./storage.js";
+import { getMessageAndInputIdFromError } from "../utils/get-message-and-input-id-from-error.js";
 
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "http://localhost:3000";
 
 export class API {
   static async login(formData) {
@@ -12,7 +13,9 @@ export class API {
 
       window.location.href = "dash.html";
     } catch (e) {
-      setFormError(e.response.data);
+      const { errorMessage, idOfElementToShowErrorMessage } = getMessageAndInputIdFromError(e);
+
+      setFormError(errorMessage, idOfElementToShowErrorMessage);
     }
   }
 
@@ -22,7 +25,21 @@ export class API {
 
       this.login(formData);
     } catch (e) {
-      setFormError(e?.response?.data || JSON.stringify(e));
+      const { errorMessage, idOfElementToShowErrorMessage } = getMessageAndInputIdFromError(e);
+
+      setFormError(errorMessage, idOfElementToShowErrorMessage);
+    }
+  }
+
+  static async getUserData() {
+    try {
+      const { data: users } = await axios.get(`getProfile.php`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      return users[0];
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
     }
   }
 }

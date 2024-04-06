@@ -1,0 +1,162 @@
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  height: 100vh;
+  border-radius: 0px 18px 18px 0px;
+  position: relative;
+  transition: all 0.5s;
+  min-width: 82px;
+  padding: 12px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+#user_avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.user_infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_infos .item-description {
+  white-space: wrap;
+}
+
+.user_infos span:last-child {
+  color: #6b6b6b;
+  font-size: 12px;
+}
+
+.side-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+}
+
+.side-item {
+  border-radius: 8px;
+  padding: 12px 8px;
+  cursor: pointer;
+}
+
+.side-item.active {
+  background-color: #f97316;
+}
+
+.side-item:hover:not(.active),
+.logout_btn:hover {
+  background-color: #e3e9f7;
+}
+
+.side-item a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a0a0a;
+}
+
+.side-item.active a {
+  color: #ffffff;
+}
+
+.side-item a i,
+.logout_btn i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.logout_btn {
+  align-self: flex-end;
+
+  border: none;
+  padding: 12px 8px;
+  font-size: 14px;
+  width: 100%;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  text-align: start;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.logout_btn span {
+  display: none;
+}
+
+.open-sidebar .logout_btn {
+  justify-content: flex-start;
+}
+
+.open-sidebar .logout_btn span {
+  display: inline;
+}
+
+#open_btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 30px;
+  right: -10px;
+  background-color: #f97316;
+  color: #ffffff;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+#open_btn_icon {
+  transition: transform 0.3s ease;
+}
+
+.open-sidebar #open_btn_icon {
+  transform: rotate(180deg);
+}
+
+.item-description {
+  width: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  transition: width 0.6s;
+  height: 0px;
+}
+
+#sidebar.open-sidebar {
+  min-width: 15%;
+}
+
+#sidebar.open-sidebar .item-description {
+  max-width: 150px;
+  word-break: break-word;
+  width: auto;
+  height: auto;
+}
+
+#sidebar.open-sidebar .side-item a {
+  justify-content: flex-start;
+  gap: 14px;
+}

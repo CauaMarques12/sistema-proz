@@ -23,6 +23,8 @@ async function handleFormSubmit(e) {
 
   const formData = new FormData(e.target);
 
+  formData.get("cell") && formData.set("cell", formData.get("cell").replace(/\D/g, ""));
+
   const data = {
     name: formData.get("name"),
     email: formData.get("email"),
@@ -34,7 +36,7 @@ async function handleFormSubmit(e) {
 
   const isDataValid = validateData(data);
 
-  if (!isDataValid) return setFormError("Dados inválidos");
+  if (!isDataValid) return;
 
   const authType = data.gender ? "sign" : "login";
 

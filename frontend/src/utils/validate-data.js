@@ -1,15 +1,45 @@
+import { setFormError } from "./set-form-error.js";
+
 export function validateData(data) {
-  if (!data || !data.email || !data.password) return false;
+  if (!data || !data.email || !data.password) {
+    setFormError("Email ou senha não inseridos.", "email");
+    setFormError("Email ou senha não inseridos.", "password");
+    return false;
+  }
+
+  const isNameOnData = data.name;
+  const isNameValid = data.name.length <= 50;
+  if (isNameOnData && !isNameValid) {
+    setFormError("Nome deve conter somente 50 caracteres.", "name");
+    return false;
+  }
 
   const isGenderOnData = data.gender;
   const isGenderValid = data.gender == "M" || data.gender == "F";
-  if (isGenderOnData && !isGenderValid) return false;
+  if (isGenderOnData && !isGenderValid) {
+    setFormError("Gênero inválido.", "male");
+    setFormError("Gênero inválido.", "female");
+    return false;
+  }
 
   const isAgeOnData = data.age;
-  const isAgeValid = data.age >= 8 && data.age <= 100;
-  if (isAgeOnData && !isAgeValid) return false;
+  const isAgeValid = data.age > 0;
+  if (isAgeOnData && !isAgeValid) {
+    setFormError("Idade precisa ser maior que 0.", "age");
+    return false;
+  }
 
-  if (data.password.length < 8) return false;
+  const isCellOnData = data.cell;
+  const isCellValid = data.cell.length == 11;
+  if (isCellOnData && !isCellValid) {
+    setFormError("Número de telefone precisa conter 11 caracteres.", "phone");
+    return false;
+  }
+
+  if (data.password.length < 8 || data.password.length > 18) {
+    setFormError("A senha deve conter entre 8 a 18 caracteres.", "password");
+    return false;
+  }
 
   return true;
 }
