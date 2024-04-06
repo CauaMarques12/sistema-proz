@@ -29,7 +29,14 @@ if (!$userFound) {
 
 if (!password_verify($password, $userFound->senha)) {
     http_response_code(401);
-    die("Senha incorreta");
+
+    $data = [
+        "input" => 'password',
+        "error" => "Senha incorreta.",
+    ];
+    echo json_encode($data);
+
+    exit();
 }
 
 $payload = [

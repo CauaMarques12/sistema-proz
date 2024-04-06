@@ -13,7 +13,7 @@ $cellphone = htmlspecialchars($_POST['cell']);
 $gender = htmlspecialchars($_POST['gender']);
 $name = htmlspecialchars($_POST['name']);
 
-if (strlen($name) > 50){
+if (strlen($name) > 50) {
    http_response_code(402);
 
    $data = [
@@ -25,7 +25,7 @@ if (strlen($name) > 50){
    exit();
 }
 
-if (strlen($password) > 18){
+if (strlen($password) > 18) {
    http_response_code(402);
    $data = [
       "input" => 'password',
@@ -36,11 +36,11 @@ if (strlen($password) > 18){
    exit();
 }
 
-if (strlen($cellphone) != 11){
+if (strlen($cellphone) != 11) {
    http_response_code(402);
    $data = [
-      "input" => 'cellphone',
-      "error" => "Formato de número inválido, deve conter 11 caracteres.",
+      "input" => 'phone',
+      "error" => "Formato de telefone inválido, deve conter 11 caracteres.",
    ];
 
    echo json_encode($data);
