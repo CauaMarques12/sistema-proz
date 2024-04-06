@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProzSystem: Dashboard</title>
-    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="src/styles/dash.css" />
-    <link rel="stylesheet" href="src/styles/sidebar.css" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProzSystem: Dashboard</title>
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="src/styles/dash.css" />
+  <link rel="stylesheet" href="src/styles/sidebar.css" />
+</head>
+
+<body>
+ 
+
     <nav id="sidebar" class="open-sidebar">
       <div id="sidebar_content">
         <div class="user">
@@ -64,51 +63,72 @@
         <span class="item-description">Logout</span>
       </button>
     </nav>
+  
 
     <main>
-      <section class="container-area">
-        <div class="container">
-          <canvas id="dash1">
-            
-          </canvas>
-          <div class="canvas-text">Usuários Cadastrados : </div>
-        </div>
-      
-        <div class="container">
-          <canvas id="dash2">
-           
-          </canvas>
-          <div class="canvas-text">Números de Acessos Recentes : </div>
-        </div>
-      
-        <div class="container">
-          <canvas id="dash3">
-            
-          </canvas>
-          <div class="canvas-text"> Usuários Administradores : </div>
-        </div>
-      </section>
-
-      <section class="area-maior">
-        <div class="container-graphic">
-          <canvas id="dash4"></canvas>
+      <div class="cards">
+        <div class="card">
+          <div class="card-content">
+            <div id="TotalUsers" class="number">Puxar db</div>
+            <div class="card-name">Usuários Total</div>
+          </div>
+          <div class="icon-box">
+            <i class="fa fa-users"></i>
+          </div>
         </div>
 
-        <div class="container-graphic">
-          <canvas id="dash5"></canvas>
+        <div class="card">
+          <div class="card-content">
+            <div class="number">Puxar db</div>
+            <div class="card-name">Usuários Adm</div>
+          </div>
+          <div class="icon-box">
+            <i class="fa fa-unlock-alt"></i>
+          </div>
         </div>
-      </section>
+
+        <div class="card">
+          <div class="card-content">
+            <div class="number">Puxar db</div>
+            <div class="card-name">Usuários Ativos</div>
+          </div>
+          <div class="icon-box">
+            <i class="fa fa-check"></i>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <div class="number">Puxar db</div>
+            <div class="card-name">Usuários Bloqueados</div>
+          </div>
+          <div class="icon-box">
+            <i class="fa fa-exclamation-triangle"></i>
+          </div>
+        </div>
+
+        
+      </div>
+      <div class="charts">
+        <div class="chart">
+          <h2>Usuários por Setor</h2>
+          <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart" id="doughnut-chart">
+          <h2>Usuários</h2>
+          <canvas id="doughnut"></canvas>
+        </div>
+      </div>
     </main>
+ 
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/frontend/src/app.js" type="module"></script>
-    <script src="/frontend/src/dash.js" type="module"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
-      integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/frontend/src/app.js" type="module"></script>
+  <script src="/frontend/src/dash.js" type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
+    integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
 </html>

@@ -4,117 +4,43 @@ document.getElementById('open_btn').addEventListener('click', function () {
 
 
 
+// Dashboard 1
+const ctx = document.getElementById('lineChart');
 
-const ctx = document.getElementById('dash4');
-
-new Chart(ctx, {
-  type: 'pie',
-  data: {
-    labels: ['Masculino', 'Feminino'],
-    datasets: [{
-      label: ['Pessoas por Gênero'],
-      data: [53, 47],
-      borderWidth: 1,
-      backgroundColor: ['rgb(255, 99, 132 )', '#ff6600',]
-    }]
-  },
-  options: {
-    aspectRatio: 0.8,
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart'
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Financeiro', 'Administração', 'TI', 'Conservação', 'Manutenção'],
+      datasets: [{
+        label: 'Usuários',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor : ['#f97316'],
+        borderColor : ['#f97316'],
+        borderWidth: 1
+      }]
     },
-    scales: {
-      y: {
-        
-        ticks: {
-          display: false
-        },
-        grid: {
-          drawOnChartArea: false,
-          drawTicks: false,
-        },
-        min: 0,
-        max: 100,
-      },
-      x: {
-        ticks: {
-          display: false
-        },
-
-        grid: {
-          drawOnChartArea: false,
-          drawTicks: false,
-
-        },
-      },
-    },
-    responsive: true,
-    animations: {
-      tension: {
-        duration: 1000,
-        easing: 'linear',
-        from: 1,
-        to: 0,
-        loop: false,
-      },
-    },
-  }
-}
-);
+    options: {
+      responsive : true,
+    }
+  });
 
 
-
-
-const cty = document.getElementById('dash5');
+// Dashboard 2
+const cty = document.getElementById('doughnut');
 
 new Chart(cty, {
-  type: 'line',
+  type: 'doughnut',
   data: {
-    labels: ['Financeiro', 'Adm', 'TI', 'Conservação'],
+    labels: ['Masculino', 'Femininp'],
     datasets: [{
-      label: ['Numero de Usuário por Setor'],
-      data: [12, 23, 9 ,17],
-      borderWidth: 1,
-      backgroundColor: ['rgb(255, 99, 132 )', '#ff6600',]
+      label: 'Gênero por Usuário',
+      data: [57, 43],
+      backgroundColor : ['#f97316', '#00'],
+      borderColor : ['#f97316'],
+      borderWidth: 1
     }]
   },
   options: {
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    aspectRatio: 0.8,
-    scales: {
-      y: {
-        ticks: {
-          display: false
-        },
-        grid: {
-          drawOnChartArea: false,
-          drawTicks: false,
-        },
-        min: 0,
-        max: 100,
-      },
-      x: {
-        
-        grid: {
-          drawOnChartArea: false,
-          drawTicks: false,
-        },
-      },
-    },
-    responsive: true,
-    animations: {
-      tension: {
-        duration: 1000,
-        easing: 'linear',
-        from: 1,
-        to: 0,
-        loop: false,
-      },
-    },
+    responsive : true,
   }
-}
-);
+});

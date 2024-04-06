@@ -32,3 +32,14 @@ async function renderUserData() {
     gender == "M" ? "Masculino" : "Feminino"
   }`;
 }
+
+
+renderCountData();
+
+async function renderCountData() {
+  const usersCount = document.getElementById("TotalUsers");
+
+  const { quantidadeUsuarios: qntusers} = await API.getCountData();
+
+  usersCount.innerText = qntusers;
+};

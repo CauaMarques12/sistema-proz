@@ -42,4 +42,18 @@ export class API {
       alert(getMessageAndInputIdFromError(e).errorMessage);
     }
   }
-}
+
+
+  static async getCountData() {
+    try {
+      const { data: users } = await axios.get(`getNumUsers.php`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      return users[0];
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }};
+
+
