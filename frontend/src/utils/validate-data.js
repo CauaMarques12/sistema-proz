@@ -8,7 +8,7 @@ export function validateData(data) {
   }
 
   const isNameOnData = data.name;
-  const isNameValid = isNameOnData ? data.name.length <= 50 : false;
+  const isNameValid = data.name.length <= 50;
   if (isNameOnData && !isNameValid) {
     setFormError("Nome deve conter somente 50 caracteres.", "name");
     return false;
@@ -30,7 +30,7 @@ export function validateData(data) {
   }
 
   const isCellOnData = data.cell;
-  const isCellValid = isCellOnData ? data.cell.length == 11: false;
+  const isCellValid = data.cell.length == 11;
   if (isCellOnData && !isCellValid) {
     setFormError("Número de telefone precisa conter 11 caracteres.", "phone");
     return false;
