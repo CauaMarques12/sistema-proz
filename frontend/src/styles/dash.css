@@ -22,7 +22,8 @@ canvas {
   border: 1px solid gainsboro;
   background: white;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 13px;
+  border-radius: 10px;
+  position: relative;
 }
 
 .container-area {
@@ -34,7 +35,6 @@ canvas {
 
 .area-maior {
   display: flex;
-  max-width: 100%;
   gap: 20px;
   justify-content: center;
   margin-top: 100px;
@@ -46,8 +46,18 @@ canvas {
   flex: 1;
   height: 150px;
   width: 150px;
-  margin-top: 20px;
+  margin-top: 30px;
   justify-content: center;
+  text-align: center;
+}
+
+.canvas-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: black;
 }
 
 .container-graphic {
@@ -57,8 +67,8 @@ canvas {
   justify-content: center;
   padding: 0;
   gap: 10px;
-  width: 550px;
-  height: 300px;
+  width: 650px;
+  height: 650px;
 }
 
 #dash5 {

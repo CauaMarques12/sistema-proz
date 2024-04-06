@@ -19,7 +19,11 @@ new Chart(ctx, {
     }]
   },
   options: {
-    aspectRatio: 1.7,
+    aspectRatio: 0.8,
+    title: {
+      display: true,
+      text: 'Chart.js Bar Chart'
+    },
     scales: {
       y: {
         
@@ -65,18 +69,22 @@ new Chart(ctx, {
 const cty = document.getElementById('dash5');
 
 new Chart(cty, {
-  type: 'bar',
+  type: 'line',
   data: {
-    labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN'],
+    labels: ['Financeiro', 'Adm', 'TI', 'Conservação'],
     datasets: [{
-      label: ['Numero de Acessos'],
-      data: [28, 19, 25, 32, 78, 43],
+      label: ['Numero de Usuário por Setor'],
+      data: [12, 23, 9 ,17],
       borderWidth: 1,
       backgroundColor: ['rgb(255, 99, 132 )', '#ff6600',]
     }]
   },
   options: {
-    aspectRatio: 1.7,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    aspectRatio: 0.8,
     scales: {
       y: {
         ticks: {
