@@ -14,56 +14,74 @@
 </head>
 
 <body>
- 
 
-    <nav id="sidebar" class="open-sidebar">
-      <div id="sidebar_content">
-        <div class="user">
-          <img src="/frontend/assets/avatar-user.png" alt="foto de perfil" id="user_avatar" />
-          <p class="user_infos">
-            <span class="item-description" id="username">Carregando...</span>
-            <span class="item-description" id="description">Carregando...</span>
-          </p>
+   <nav id="sidebar">
+    <div id="sidebar_content">
+        <div id="user">
+            <img src="/frontend/assets/avatar-user.png" id="user_avatar" alt="Avatar">
+
+            <p id="user_infos">
+                <span class="item-description" id="username">
+                    
+                </span>
+                <span class="item-description" id="description">
+                    
+                </span>
+            </p>
         </div>
 
-        <ul class="side-items">
-          <li class="side-item active">
-            <a href="#">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span class="item-description">Dashboard</span>
-            </a>
-          </li>
+        <ul id="side_items">
+            <li class="side-item active">
+                <a href="#">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="item-description">
+                        Dashboard
+                    </span>
+                </a>
+            </li>
 
-          <li class="side-item">
-            <a href="#">
-              <i class="fa-solid fa-user"></i>
-              <span class="item-description">Usuários</span>
-            </a>
-          </li>
+            <li class="side-item">
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="item-description">
+                        Usuários
+                    </span>
+                </a>
+            </li>
 
-          <li class="side-item">
-            <a href="#">
-              <i class="fa-solid fa-bell"></i>
-              <span class="item-description">Notificações</span>
-            </a>
-          </li>
+            <li class="side-item">
+                <a href="#">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="item-description">
+                        Notificações
+                    </span>
+                </a>
+            </li>
 
-          <li class="side-item">
-            <a href="#">
-              <i class="fa-solid fa-gear"></i>
-              <span class="item-description">Configurações</span>
-            </a>
-          </li>
+            <li class="side-item">
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="item-description">
+                        Configurações
+                    </span>
+                </a>
+            </li>
         </ul>
 
-        <button id="open_btn"><i id="open_btn_icon" class="fa-solid fa-chevron-right"></i></button>
-      </div>
-      <button class="logout_btn logout" id="logout">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span class="item-description">Logout</span>
-      </button>
-    </nav>
-  
+        <button id="open_btn">
+            <i id="open_btn_icon" class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <div id="logout">
+        <button id="logout_btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="item-description">
+                Logout
+            </span>
+        </button>
+    </div>
+</nav>
 
     <main>
       <div class="cards">

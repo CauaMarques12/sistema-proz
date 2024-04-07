@@ -10,15 +10,16 @@
 body {
   background: #e3e9f7;
   display: flex;
+  min-height: 100vh;
 }
 
 
 .main {
   position: absolute;
   top: 60px;
-  width: calc(100% - 260px);
+  width: calc(100% - 150px);
   left: 260px;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 150px);
   background: #f5f5f5;
 
 }
@@ -39,6 +40,22 @@ body {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
+}
+
+.cards .card:hover{
+  background-color: #f97316;
+}
+
+.cards .card:hover .number{
+  color: #fff;
+}
+
+.cards .card:hover .card-name{
+  color: #fff;
+}
+
+.cards .card:hover .icon-box{
+  color: #fff;
 }
 
 .number {
@@ -82,4 +99,41 @@ body {
   text-align: center;
 }
 
+@media (max-width:1115px){
+  .main{
+    left: 60px;
+    width: calc(100% - 150px);
+  }
+}
 
+@media (max-width:880px){
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts {
+    grid-template-columns: 1fr;
+  }
+
+  #doughnut-chart{
+    padding: 50px;
+  }
+  #doughnut{
+    padding: 50px;
+  }
+}
+
+
+@media (max-width:500px){
+    .cards{
+      grid-template-columns: 1fr;
+    }
+    #sidebar{
+      min-width: 60px;
+    }
+    #doughnut-chart{
+      padding: 10px;
+    }
+    #doughnut{
+      padding: 10px;
+    }
+}
