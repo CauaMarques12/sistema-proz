@@ -54,6 +54,34 @@ export class API {
     } catch (e) {
       alert(getMessageAndInputIdFromError(e).errorMessage);
     }
-  }};
+  }
+
+  static async getUsersData() {
+    try {
+      const { data: users } = await axios.get(`getUsers.php`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      return users;
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }
+
+  // static async delUser(userEmail) {
+  //   try {
+  //     const { data: users } = await axios.get(`delUser.php`, {
+  //       headers: { 
+  //         Authorization: `Bearer ${StorageToken.get()}`,
+  //         email: `${userEmail}`
+  //       },
+  //     });
+
+  //     return users;
+  //   } catch (e) {
+  //     alert(getMessageAndInputIdFromError(e).errorMessage);
+  //   }
+  // }
+};
 
 
