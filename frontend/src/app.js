@@ -1,8 +1,6 @@
 import { API } from "./services/api.js";
 import { StorageToken } from "./services/storage.js";
 
-const logOutButton = document.getElementById("logout");
-
 const token = StorageToken.get();
 if (!token) {
   document.body.innerHTML =
@@ -13,11 +11,18 @@ if (!token) {
   }, 5 * 1000);
 }
 
-logOutButton.addEventListener("click", () => {
-  StorageToken.remove();
+token && render();
 
-  window.location.href = "sign.html";
-});
+function render() {
+  const logOutButton = document.getElementById("logout");
+  logOutButton.addEventListener("click", () => {
+    StorageToken.remove();
+    window.location.href = "sign.html";
+  });
+
+  renderUserData();
+  renderUsersAmountData();
+}
 
 renderUserData();
 
@@ -33,13 +38,12 @@ async function renderUserData() {
   }`;
 }
 
+renderUsersAmountData();
 
-renderCountData();
+async function renderUsersAmountData() {
+  const usersAmountElement = document.getElementById("users-amount");
 
-async function renderCountData() {
-  const usersCount = document.getElementById("TotalUsers");
+  const { quantidadeUsuarios: usersAmount } = await API.getUsersAmountData();
 
-  const { quantidadeUsuarios: qntusers} = await API.getCountData();
-
-  usersCount.innerText = qntusers;
-};
+  usersAmountElement.innerText = usersAmount;
+}
