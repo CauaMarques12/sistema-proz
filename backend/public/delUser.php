@@ -14,7 +14,7 @@ if (!$decoded->admin){
     die("Acesso não autorizado!");
 }
 
-$email = $_SERVER['HTTP_EMAIL'];
+$email = $_GET['email'];
 
 $pdo = Connection::connect();
 
