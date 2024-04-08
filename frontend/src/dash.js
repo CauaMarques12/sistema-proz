@@ -10,6 +10,16 @@ async function renderUsersAmountData() {
   usersAmountElement.innerText = usersAmount;
 }
 
+renderAdminAmountData()
+
+async function renderAdminAmountData() {
+  const usersAmountElement = document.getElementById("admins-amount");
+
+  const { administradores: adminsAmount } = await API.getAdminAmountData();
+
+  usersAmountElement.innerText = adminsAmount;
+}
+
 // Dashboard 1
 const ctx = document.getElementById("lineChart");
 

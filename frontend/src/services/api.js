@@ -59,6 +59,20 @@ export class API {
     }
   }
 
+  static async getAdminAmountData() {
+    try {
+      const { data } = await axios.get(`getNumAdm.php`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      const adminsAmount = data[0];
+
+      return adminsAmount;
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }
+
   static async getUsersData() {
     try {
       const { data: users } = await axios.get(`getUsers.php`, {
