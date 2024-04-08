@@ -1,0 +1,56 @@
+main > div {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 32px 8px;
+  border-color: #27272a;
+  margin: 0 auto;
+}
+
+table thead {
+  color: #f97316;
+  font-weight: 500;
+}
+
+table tbody {
+  color: #27272a;
+}
+
+table #row-buttons-group {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 6px;
+}
+
+table button {
+  background-color: #e4e4e7;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid #d4d4d8;
+  width: max-content;
+}
+
+table button:hover {
+  background-color: #d4d4d8;
+}
+
+table button i {
+  margin-left: 4px;
+}
+
+table button.delete {
+  color: #fff;
+  background-color: #ef4444;
+  border: none;
+}
+
+table button.delete:hover {
+  background-color: #b91c1c;
+}

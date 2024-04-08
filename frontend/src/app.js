@@ -1,8 +1,6 @@
 import { API } from "./services/api.js";
 import { StorageToken } from "./services/storage.js";
 
-const logOutButton = document.getElementById("logout");
-
 const token = StorageToken.get();
 if (!token) {
   document.body.innerHTML =
@@ -13,13 +11,13 @@ if (!token) {
   }, 5 * 1000);
 }
 
+const logOutButton = document.getElementById("logout");
 logOutButton.addEventListener("click", () => {
   StorageToken.remove();
-
   window.location.href = "sign.html";
 });
 
-renderUserData();
+token && renderUserData();
 
 async function renderUserData() {
   const usernameElement = document.getElementById("username");
@@ -33,13 +31,8 @@ async function renderUserData() {
   }`;
 }
 
-
-renderCountData();
-
-async function renderCountData() {
-  const usersCount = document.getElementById("TotalUsers");
-
-  const { quantidadeUsuarios: qntusers} = await API.getCountData();
-
-  usersCount.innerText = qntusers;
-};
+document
+  .getElementById("open_btn")
+  .addEventListener("click", () =>
+    document.getElementById("sidebar").classList.toggle("open-sidebar")
+  );

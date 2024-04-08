@@ -33,24 +33,27 @@ export class API {
 
   static async getUserData() {
     try {
-      const { data: users } = await axios.get(`getProfile.php`, {
+      const { data } = await axios.get(`getProfile.php`, {
         headers: { Authorization: `Bearer ${StorageToken.get()}` },
       });
 
-      return users[0];
+      const users = data[0];
+
+      return users;
     } catch (e) {
       alert(getMessageAndInputIdFromError(e).errorMessage);
     }
   }
 
-
-  static async getCountData() {
+  static async getUsersAmountData() {
     try {
-      const { data: users } = await axios.get(`getNumUsers.php`, {
+      const { data } = await axios.get(`getNumUsers.php`, {
         headers: { Authorization: `Bearer ${StorageToken.get()}` },
       });
 
-      return users[0];
+      const usersAmount = data[0];
+
+      return usersAmount;
     } catch (e) {
       alert(getMessageAndInputIdFromError(e).errorMessage);
     }
@@ -71,7 +74,7 @@ export class API {
   // static async delUser(userEmail) {
   //   try {
   //     const { data: users } = await axios.get(`delUser.php`, {
-  //       headers: { 
+  //       headers: {
   //         Authorization: `Bearer ${StorageToken.get()}`,
   //         email: `${userEmail}`
   //       },
@@ -82,6 +85,4 @@ export class API {
   //     alert(getMessageAndInputIdFromError(e).errorMessage);
   //   }
   // }
-};
-
-
+}
