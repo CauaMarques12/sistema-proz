@@ -71,18 +71,15 @@ export class API {
     }
   }
 
-  // static async delUser(userEmail) {
-  //   try {
-  //     const { data: users } = await axios.get(`delUser.php`, {
-  //       headers: {
-  //         Authorization: `Bearer ${StorageToken.get()}`,
-  //         email: `${userEmail}`
-  //       },
-  //     });
-
-  //     return users;
-  //   } catch (e) {
-  //     alert(getMessageAndInputIdFromError(e).errorMessage);
-  //   }
-  // }
+  static async delUser(userEmail) {
+    try {
+      const { data: users } = await axios.get(`delUser.php?email=${userEmail}`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+  
+      location.reload();
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }  
 }
