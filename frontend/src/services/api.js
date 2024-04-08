@@ -73,6 +73,20 @@ export class API {
     }
   }
 
+  static async getGenderAmountData(gender) {
+    try {
+      const { data } = await axios.get(`getGender.php?gender=${gender}`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      const genderAmount = data[0];
+
+      return genderAmount;
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }
+
   static async getUsersData() {
     try {
       const { data: users } = await axios.get(`getUsers.php`, {
@@ -87,7 +101,7 @@ export class API {
 
   static async delUser(userEmail) {
     try {
-      const { data: users } = await axios.get(`delUser.php?email=${userEmail}`, {
+      await axios.get(`delUser.php?email=${userEmail}`, {
         headers: { Authorization: `Bearer ${StorageToken.get()}` },
       });
   
