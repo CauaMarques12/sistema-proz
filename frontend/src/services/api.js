@@ -127,6 +127,18 @@ export class API {
     }
   }
 
+  static async getRoles(){
+    try{
+      const { data: roles } = await axios.get(`getRoles.php`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      return roles;
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }
+
   static async delUser(userEmail) {
     try {
       await axios.get(`delUser.php?email=${userEmail}`, {

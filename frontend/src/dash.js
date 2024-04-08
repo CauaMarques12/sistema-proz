@@ -43,65 +43,46 @@ async function renderActiveAmountData() {
 // Dashboard 1
 const ctx = document.getElementById("lineChart");
 
-new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: ["Setores"],
-    datasets: [
-      {
-        label: "Financeiro",
-        data: [12],
-        backgroundColor: ["#f97316"],
-        borderColor: ["#f97316"],
-        borderWidth: 1,
-      },
-      
-      {
-        label: "Administração",
-        data: [19],
-        backgroundColor: ["#f97316"],
-        borderColor: ["#f97316"],
-        borderWidth: 1,
-      },
+function randomColor() {
+  const hue = Math.floor(Math.random() * 30) + 15; 
+  const saturation = Math.floor(Math.random() * 30) + 70; 
+  const lightness = Math.floor(Math.random() * 30) + 50; 
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
 
-      {
-        label: "TI",
-        data: [3],
-        backgroundColor: ["#f97316"],
-        borderColor: ["#f97316"],
-        borderWidth: 1,
-      },
+Promise.all([API.getRoles()]).then((data) => {
+  const datasetsChart = [];
 
-      {
-        label: "Conservação",
-        data: [5],
-        backgroundColor: ["#f97316"],
-        borderColor: ["#f97316"],
-        borderWidth: 1,
-      },
+  for (const role of data[0]) {
+      const tempJson = {
+          label: role.setor,
+          data: [role.quantidadeUsuarios],
+          backgroundColor: [randomColor()], // Gera uma cor aleatória para cada conjunto de dados
+          borderColor: ["#f97316"],
+          borderWidth: 1,
+      };
 
-      {
-        label: "Manutenção",
-        data: [2],
-        backgroundColor: ["#f97316"],
-        borderColor: ["#f97316"],
-        borderWidth: 1,
+      datasetsChart.push(tempJson);
+  }
+
+  new Chart(ctx, {
+      type: "bar",
+      data: {
+          labels: ["Setores"],
+          datasets: datasetsChart,
       },
-      
-    ],
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-  },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+      },
+  });
 });
+
 
 // Dashboard 2
 const cty = document.getElementById("doughnut");
 
 Promise.all([API.getGenderAmountData('M'), API.getGenderAmountData('F')]).then((data)=>{
-
-  console.log(data)
 
   new Chart(cty, {
     type: "doughnut",

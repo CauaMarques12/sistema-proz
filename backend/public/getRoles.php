@@ -11,8 +11,10 @@ header('Access-Control-Allow-Headers: Authorization, Content-Type, x-xsrf-token,
 
 $pdo = Connection::connect();
 
-$prepare = $pdo->prepare('select setor, COUNT(*) as quantidadeUsuarios FROM clientes GROUP BY setor');
-$prepare->execute();  
+$prepare = $pdo->prepare('SELECT setor, COUNT(*) as quantidadeUsuarios FROM clientes WHERE setor IS NOT NULL AND setor != :block GROUP BY setor');
+$prepare->execute([
+    'block' => 'block'
+]);
 
 $userFound = $prepare->fetchAll();
 
