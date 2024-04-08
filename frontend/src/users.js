@@ -19,11 +19,10 @@ async function renderUsersData() {
   }
 }
 
-// document.querySelector('tbody').addEventListener('click', function(event){
-//     const target = event.target;
-//     const idBtn = target.id;
-//     console.log('asdfasdfs')
-//     if(idBtn.substring(0, 4) == 'del_'){
-//         API.delUser(document.querySelector(`email_${idBtn.split('_')[1]}`))
-//     }
-// });
+document.querySelector('tbody').addEventListener('click', function(event){
+    const target = event.target;
+    const idBtn = target.id;
+    if(idBtn.substring(0, 4) == 'del_'){
+      API.delUser(document.querySelector(`#email_${idBtn.split('_')[1]}`).innerText)
+    }
+});
