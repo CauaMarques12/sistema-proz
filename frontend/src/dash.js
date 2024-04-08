@@ -24,7 +24,7 @@ async function renderAdminAmountData() {
 const ctx = document.getElementById("lineChart");
 
 new Chart(ctx, {
-  type: "line",
+  type: "bar",
   data: {
     labels: ["Financeiro", "Administração", "TI", "Conservação", "Manutenção"],
     datasets: [
