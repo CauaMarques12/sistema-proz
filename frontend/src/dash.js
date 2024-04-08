@@ -46,15 +46,48 @@ const ctx = document.getElementById("lineChart");
 new Chart(ctx, {
   type: "bar",
   data: {
-    labels: ["Financeiro", "Administração", "TI", "Conservação", "Manutenção"],
+    labels: ["Setores"],
     datasets: [
       {
-        label: "Usuários",
-        data: [12, 19, 3, 5, 2, 3],
+        label: "Financeiro",
+        data: [12],
         backgroundColor: ["#f97316"],
         borderColor: ["#f97316"],
         borderWidth: 1,
       },
+      
+      {
+        label: "Administração",
+        data: [19],
+        backgroundColor: ["#f97316"],
+        borderColor: ["#f97316"],
+        borderWidth: 1,
+      },
+
+      {
+        label: "TI",
+        data: [3],
+        backgroundColor: ["#f97316"],
+        borderColor: ["#f97316"],
+        borderWidth: 1,
+      },
+
+      {
+        label: "Conservação",
+        data: [5],
+        backgroundColor: ["#f97316"],
+        borderColor: ["#f97316"],
+        borderWidth: 1,
+      },
+
+      {
+        label: "Manutenção",
+        data: [2],
+        backgroundColor: ["#f97316"],
+        borderColor: ["#f97316"],
+        borderWidth: 1,
+      },
+      
     ],
   },
   options: {
