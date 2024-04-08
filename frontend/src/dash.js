@@ -1,6 +1,20 @@
 import { API } from "./services/api.js";
+import { StorageToken } from "./services/storage.js";
+import { randomColor } from "./utils/random-color.js";
 
-renderUsersAmountData();
+const token = StorageToken.get();
+
+if (token) render();
+
+function render() {
+  renderUsersAmountData();
+  renderAdminAmountData();
+  renderBlockAmountData();
+  renderActiveAmountData();
+
+  renderSectorsChart();
+  renderGendersChart();
+}
 
 async function renderUsersAmountData() {
   const usersAmountElement = document.getElementById("users-amount");
@@ -10,8 +24,6 @@ async function renderUsersAmountData() {
   usersAmountElement.innerText = usersAmount;
 }
 
-renderAdminAmountData()
-
 async function renderAdminAmountData() {
   const usersAmountElement = document.getElementById("admins-amount");
 
@@ -19,8 +31,6 @@ async function renderAdminAmountData() {
 
   usersAmountElement.innerText = adminsAmount;
 }
-
-renderBlockAmountData()
 
 async function renderBlockAmountData() {
   const blockAmountElement = document.getElementById("block-amount");
@@ -30,8 +40,6 @@ async function renderBlockAmountData() {
   blockAmountElement.innerText = totalBlock;
 }
 
-renderActiveAmountData()
-
 async function renderActiveAmountData() {
   const activeAmountElement = document.getElementById("active-amount");
 
@@ -40,49 +48,42 @@ async function renderActiveAmountData() {
   activeAmountElement.innerText = totalActive;
 }
 
-// Dashboard 1
 const ctx = document.getElementById("lineChart");
-
-function randomColor() {
-  const hue = Math.floor(Math.random() * 30) + 15; 
-  const saturation = Math.floor(Math.random() * 30) + 70; 
-  const lightness = Math.floor(Math.random() * 30) + 50; 
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-}
-
-Promise.all([API.getRoles()]).then((data) => {
+async function renderSectorsChart() {
+  const roles = await API.getRoles();
   const datasetsChart = [];
 
-  for (const role of data[0]) {
-      const tempJson = {
-          label: role.setor,
-          data: [role.quantidadeUsuarios],
-          backgroundColor: [randomColor()], // Gera uma cor aleatória para cada conjunto de dados
-          borderColor: ["#f97316"],
-          borderWidth: 1,
-      };
+  for (const role of roles) {
+    const tempJson = {
+      label: role.setor,
+      data: [role.quantidadeUsuarios],
+      backgroundColor: [randomColor()], // Gera uma cor aleatória para cada conjunto de dados
+      borderColor: ["#f97316"],
+      borderWidth: 1,
+    };
 
-      datasetsChart.push(tempJson);
+    datasetsChart.push(tempJson);
   }
 
   new Chart(ctx, {
-      type: "bar",
-      data: {
-          labels: ["Setores"],
-          datasets: datasetsChart,
-      },
-      options: {
-          responsive: true,
-          maintainAspectRatio: false,
-      },
+    type: "bar",
+    data: {
+      labels: ["Setores"],
+      datasets: datasetsChart,
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
   });
-});
+}
 
-
-// Dashboard 2
 const cty = document.getElementById("doughnut");
-
-Promise.all([API.getGenderAmountData('M'), API.getGenderAmountData('F')]).then((data)=>{
+async function renderGendersChart() {
+  const [maleGenderAmount, femaleGenderAmount] = await Promise.all([
+    API.getGenderAmountData("M"),
+    API.getGenderAmountData("F"),
+  ]);
 
   new Chart(cty, {
     type: "doughnut",
@@ -91,9 +92,9 @@ Promise.all([API.getGenderAmountData('M'), API.getGenderAmountData('F')]).then((
       datasets: [
         {
           label: "Gênero por Usuário",
-          data: [data[0].genero, data[1].genero],
+          data: [maleGenderAmount.genero, femaleGenderAmount.genero],
           backgroundColor: ["#f97316", "#00"],
-          borderColor: ["#f97316"],
+          // borderColor: ["#f97316"],
           borderWidth: 1,
         },
       ],
@@ -102,7 +103,4 @@ Promise.all([API.getGenderAmountData('M'), API.getGenderAmountData('F')]).then((
       responsive: true,
     },
   });
-
-})
-
-
+}
