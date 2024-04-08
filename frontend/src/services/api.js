@@ -87,6 +87,34 @@ export class API {
     }
   }
 
+  static async getBlockAmountData() {
+    try {
+      const { data } = await axios.get(`getNumBlock.php`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      const blockAmount = data[0];
+
+      return blockAmount;
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }
+
+  static async getActiveAmountData() {
+    try {
+      const { data } = await axios.get(`getNumActives.php`, {
+        headers: { Authorization: `Bearer ${StorageToken.get()}` },
+      });
+
+      const activeAmount = data[0];
+
+      return activeAmount;
+    } catch (e) {
+      alert(getMessageAndInputIdFromError(e).errorMessage);
+    }
+  }
+
   static async getUsersData() {
     try {
       const { data: users } = await axios.get(`getUsers.php`, {

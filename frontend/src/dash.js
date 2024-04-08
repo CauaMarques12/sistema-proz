@@ -20,6 +20,26 @@ async function renderAdminAmountData() {
   usersAmountElement.innerText = adminsAmount;
 }
 
+renderBlockAmountData()
+
+async function renderBlockAmountData() {
+  const blockAmountElement = document.getElementById("block-amount");
+
+  const { total: totalBlock } = await API.getBlockAmountData();
+
+  blockAmountElement.innerText = totalBlock;
+}
+
+renderActiveAmountData()
+
+async function renderActiveAmountData() {
+  const activeAmountElement = document.getElementById("active-amount");
+
+  const { total: totalActive } = await API.getActiveAmountData();
+
+  activeAmountElement.innerText = totalActive;
+}
+
 // Dashboard 1
 const ctx = document.getElementById("lineChart");
 
