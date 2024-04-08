@@ -92,6 +92,12 @@ main {
   color: #666;
   text-align: center;
 }
+.chart-container{
+  height: 660px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .unauthorized {
   height: 100vh;
@@ -132,10 +138,14 @@ main {
   #sidebar {
     min-width: 60px;
   }
-  #doughnut-chart {
-    padding: 10px;
-  }
+  
   #doughnut {
     padding: 10px;
+  }
+
+
+  .chart-container{
+    height: 250px;
+    width: 250px;
   }
 }
