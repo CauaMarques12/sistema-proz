@@ -11,6 +11,17 @@ if (!token) {
   }, 5 * 1000);
 }
 
+API.getUserData().then((data) => {
+  if(data.setor == 'admin'){
+    try{
+      document.querySelector('#usuariosLi').style.display = 'block'
+      document.querySelector('#usuariosLi').style.visibility = 'visible'
+    }catch(error){
+      console.log(error)
+    }
+  }
+})
+
 const logOutButton = document.getElementById("logout");
 logOutButton.addEventListener("click", () => {
   StorageToken.remove();
