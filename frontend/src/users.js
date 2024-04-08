@@ -1,6 +1,8 @@
 import { API } from "./services/api.js";
+import { StorageToken } from "./services/storage.js";
 
-renderUsersData();
+const token = StorageToken.get();
+if (token) renderUsersData();
 
 async function renderUsersData() {
   const tbodyElement = document.querySelector("tbody");
@@ -19,10 +21,10 @@ async function renderUsersData() {
   }
 }
 
-document.querySelector('tbody').addEventListener('click', function(event){
-    const target = event.target;
-    const idBtn = target.id;
-    if(idBtn.substring(0, 4) == 'del_'){
-      API.delUser(document.querySelector(`#email_${idBtn.split('_')[1]}`).innerText)
-    }
+document.querySelector("tbody").addEventListener("click", function (event) {
+  const target = event.target;
+  const idBtn = target.id;
+  if (idBtn.substring(0, 4) == "del_") {
+    API.delUser(document.querySelector(`#email_${idBtn.split("_")[1]}`).innerText);
+  }
 });
