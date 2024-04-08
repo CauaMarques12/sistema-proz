@@ -16,6 +16,11 @@ if (!$decoded->admin){
 
 $email = $_GET['email'];
 
+if($email == $decoded->email){
+    http_response_code(401);
+    die("Você não pode deletar o seu perfil.");
+}
+
 $pdo = Connection::connect();
 
 $prepare = $pdo->prepare('delete from clientes WHERE email = :email');
