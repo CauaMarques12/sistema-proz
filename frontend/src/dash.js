@@ -99,21 +99,29 @@ new Chart(ctx, {
 // Dashboard 2
 const cty = document.getElementById("doughnut");
 
-new Chart(cty, {
-  type: "doughnut",
-  data: {
-    labels: ["Masculino", "Feminino"],
-    datasets: [
-      {
-        label: "Gênero por Usuário",
-        data: [57, 43],
-        backgroundColor: ["#f97316", "#00"],
-        borderColor: ["#f97316"],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-  },
-});
+Promise.all([API.getGenderAmountData('M'), API.getGenderAmountData('F')]).then((data)=>{
+
+  console.log(data)
+
+  new Chart(cty, {
+    type: "doughnut",
+    data: {
+      labels: ["Masculino", "Feminino"],
+      datasets: [
+        {
+          label: "Gênero por Usuário",
+          data: [data[0].genero, data[1].genero],
+          backgroundColor: ["#f97316", "#00"],
+          borderColor: ["#f97316"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  });
+
+})
+
+
