@@ -2,7 +2,6 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ProzSystem: Dashboard</title>
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
     <link
@@ -14,10 +13,11 @@
     />
     <link rel="stylesheet" href="src/styles/dash.css" />
     <link rel="stylesheet" href="src/styles/sidebar.css" />
+    <link rel="stylesheet" href="src/styles/users.css" />
   </head>
 
   <body>
-    <nav id="sidebar" class="open-sidebar">
+    <nav id="sidebar">
       <div id="sidebar_content">
         <div id="user">
           <img src="./assets/avatar-user.png" alt="foto de perfil" id="user_avatar" />
@@ -28,10 +28,10 @@
           </p>
         </div>
 
-        <ul class="side-items">
+        <ul id="side_items">
           <li class="side-item">
             <a href="dash.html">
-              <i class="fa-solid fa-chart-pie"></i>
+              <i class="fa-solid fa-chart-line"></i>
               <span class="item-description">Dashboard</span>
             </a>
           </li>
@@ -67,17 +67,19 @@
     </nav>
 
     <main>
-      <table>
-        <thead>
-          <tr>
-            <td>Nome</td>
-            <td>E-mail</td>
-            <td>Gênero</td>
-            <td>Setor</td>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <td>Nome</td>
+              <td>E-mail</td>
+              <td>Gênero</td>
+              <td>Setor</td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -1,24 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  background-color: #e3e9f7;
-}
-
-main {
-  padding: 20px;
-  z-index: 1;
-  padding-left: calc(82px + 20px);
-}
-
 #sidebar {
   display: flex;
   flex-direction: column;
@@ -29,10 +8,6 @@ main {
   position: relative;
   transition: all 0.5s;
   min-width: 82px;
-  z-index: 2;
-}
-
-#sidebar_content {
   padding: 12px;
 }
 
@@ -55,6 +30,10 @@ main {
   flex-direction: column;
 }
 
+#user_infos .item-description {
+  white-space: wrap;
+}
+
 #user_infos span:last-child {
   color: #6b6b6b;
   font-size: 12px;
@@ -69,7 +48,7 @@ main {
 
 .side-item {
   border-radius: 8px;
-  padding: 14px;
+  padding: 12px 8px;
   cursor: pointer;
 }
 
@@ -91,10 +70,11 @@ main {
 }
 
 .side-item.active a {
-  color: #e3e9f7;
+  color: #ffffff;
 }
 
-.side-item a i {
+.side-item a i,
+.logout_btn i {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,33 +82,47 @@ main {
   height: 20px;
 }
 
-logout {
-  border-top: 1px solid #e3e9f7;
-  padding: 12px;
-}
-
 .logout_btn {
+  align-self: flex-end;
+
   border: none;
-  padding: 12px;
+  padding: 12px 8px;
   font-size: 14px;
+  width: 100%;
   display: flex;
-  gap: 20px;
+  gap: 14px;
   align-items: center;
+  justify-content: center;
   border-radius: 8px;
   text-align: start;
   cursor: pointer;
   background-color: transparent;
 }
 
+.logout_btn span {
+  display: none;
+}
+
+.open-sidebar .logout_btn {
+  justify-content: flex-start;
+}
+
+.open-sidebar .logout_btn span {
+  display: inline;
+}
+
 #open_btn {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 30px;
   right: -10px;
   background-color: #f97316;
-  color: #e3e9f7;
+  color: #ffffff;
   border-radius: 100%;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border: none;
   cursor: pointer;
 }
@@ -156,7 +150,9 @@ logout {
 }
 
 #sidebar.open-sidebar .item-description {
-  width: 150px;
+  max-width: 150px;
+  word-break: break-word;
+  width: auto;
   height: auto;
 }
 

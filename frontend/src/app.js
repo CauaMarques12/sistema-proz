@@ -11,20 +11,13 @@ if (!token) {
   }, 5 * 1000);
 }
 
-token && render();
+const logOutButton = document.getElementById("logout");
+logOutButton.addEventListener("click", () => {
+  StorageToken.remove();
+  window.location.href = "sign.html";
+});
 
-function render() {
-  const logOutButton = document.getElementById("logout");
-  logOutButton.addEventListener("click", () => {
-    StorageToken.remove();
-    window.location.href = "sign.html";
-  });
-
-  renderUserData();
-  renderUsersAmountData();
-}
-
-renderUserData();
+token && renderUserData();
 
 async function renderUserData() {
   const usernameElement = document.getElementById("username");
@@ -38,12 +31,8 @@ async function renderUserData() {
   }`;
 }
 
-renderUsersAmountData();
-
-async function renderUsersAmountData() {
-  const usersAmountElement = document.getElementById("users-amount");
-
-  const { quantidadeUsuarios: usersAmount } = await API.getUsersAmountData();
-
-  usersAmountElement.innerText = usersAmount;
-}
+document
+  .getElementById("open_btn")
+  .addEventListener("click", () =>
+    document.getElementById("sidebar").classList.toggle("open-sidebar")
+  );
