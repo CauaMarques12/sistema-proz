@@ -54,3 +54,20 @@ table button.delete {
 table button.delete:hover {
   background-color: #b91c1c;
 }
+
+
+
+@media(max-width:767px) {
+  thead{
+    display: none;
+  }
+  td{
+    display: grid;
+    grid-template-columns: 10ch auto;
+  }
+  td::before{
+    color: #f97316;
+    content: attr(data-th)" ";
+    font-weight: bold;
+  }
+}

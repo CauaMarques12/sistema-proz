@@ -17,7 +17,7 @@ async function renderUsersData() {
     const genero = data[c]["genero"];
     const email = data[c]["email"];
 
-    tbodyElement.innerHTML += `<tr> <td>${nome}</td> <td id=email_${c}> ${email}</td> <td>${genero}</td> <td>${setor}</td> <td><div id="row-buttons-group"><button class="edit" id=edit_${c}>Editar <i class="fa-solid fa-edit"></i></button><button class="delete" id=del_${c}>Deletar <i class="fa-solid fa-trash"></i></button></div></td></tr>`;
+    tbodyElement.innerHTML += `<tr> <td data-th="Nome">${nome}</td> <td data-th="E-mail" id=email_${c}> ${email}</td> <td data-th="Gênero">${genero}</td> <td data-th="Setor">${setor}</td> <td><div id="row-buttons-group"><button class="edit" id=edit_${c}>Editar <i class="fa-solid fa-edit"></i></button><button class="delete" id=del_${c}>Deletar <i class="fa-solid fa-trash"></i></button></div></td></tr>`;
   }
 }
 
