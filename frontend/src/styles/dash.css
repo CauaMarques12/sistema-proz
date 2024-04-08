@@ -69,9 +69,9 @@ main {
 }
 
 .charts {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   width: 100%;
   padding: 20px;
   padding-top: 0;
@@ -82,8 +82,8 @@ main {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
+  flex-grow: 1;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  width: 100%;
 }
 
 .chart h2 {
@@ -92,8 +92,12 @@ main {
   color: #666;
   text-align: center;
 }
-.chart-container{
-  height: 660px;
+
+.chart-container {
+  width: 60vw;
+  max-width: 400px;
+  height: 90%;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,34 +122,32 @@ main {
 @media (max-width: 880px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .charts {
-    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 8px;
   }
 
-  #doughnut-chart {
-    padding: 50px;
+  main {
+    margin: 8px;
+    padding: 4px;
   }
-  #doughnut {
-    padding: 50px;
+
+  .charts {
+    padding: 0;
+    gap: 8px;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .cards {
     grid-template-columns: 1fr;
   }
-  #sidebar {
+
+  body #sidebar.open-sidebar {
+    position: fixed;
+    height: 100%;
+    box-shadow: 0 0 64px #0000004d;
+    left: 0;
+    top: 0;
     min-width: 60px;
-  }
-  
-  #doughnut {
-    padding: 10px;
-  }
-
-
-  .chart-container{
-    height: 250px;
-    width: 250px;
   }
 }
